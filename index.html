@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="left-half"></div>
+    <div class="right-half">
+      <h1>Weather App</h1>
+      <p>Get real-time weather updates for any city.</p>
+      <div class="search-panel">
+        <input type="text" id="city" placeholder="Enter city" />
+        <button onclick="getWeather()">Search</button>
+      </div>
+      <div class="weather-display hidden" id="weather-info">
+        <h2 id="city-name"></h2>
+        <img id="weather-icon" alt="Weather Icon" />
+        <p id="temperature"></p>
+        <p id="description"></p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
