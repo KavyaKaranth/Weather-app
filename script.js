@@ -1,10 +1,9 @@
 async function getWeather() {
-  const apiKey = "YOUR_API_KEY"; // Replace with your real key locally
-  const city = document.getElementById("city").value.trim();
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  
+  
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(`/.netlify/functions/weather?city=${city}`);
     if (!response.ok) {
       throw new Error(`City not found (${response.status})`);
     }
