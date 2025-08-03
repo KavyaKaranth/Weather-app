@@ -1,8 +1,17 @@
 async function getWeather() {
   const city = document.getElementById("city").value;
 
+  if (!city) {
+    alert("Please enter a city name.");
+    return;
+  }
+
   try {
-    const response = await fetch(`/.netlify/functions/weather?city=${city}`);
+    const apiKey = "b76a8f5bb84a2e87fe82c86d2629be59";
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+    );
+
     if (!response.ok) {
       throw new Error(`City not found (${response.status})`);
     }
@@ -13,7 +22,8 @@ async function getWeather() {
     document.getElementById("city-name").innerText = data.name;
     document.getElementById("temperature").innerText = `Temperature: ${data.main.temp}°C`;
     document.getElementById("description").innerText = data.weather[0].description;
-    document.getElementById("weather-icon").src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+    document.getElementById("weather-icon").src =
+      `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 
     document.getElementById("weather-info").classList.remove("hidden");
 
